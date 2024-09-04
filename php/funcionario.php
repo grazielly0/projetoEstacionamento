@@ -18,7 +18,7 @@
         string $nome,
         string $dtNascimento,
         string $telefone,
-        string $endereço,
+        string $endereco,
         float $salario,
         string $cargo
         )
@@ -28,7 +28,7 @@
             $this->nome = $nome;
             $this->dtNascimento = $dtNascimento;
             $this->telefone = $telefone;
-            $this->endereço = $endereço; 
+            $this->endereço = $endereco; 
             $this->salario = $salario; 
             $this->cargo = $cargo;
         }
@@ -128,6 +128,8 @@
                 "<br>Endereço:" .$this->getendereco().
                 "<br>Salário:" .$this->getsalario().
                 "<br>Cargo:" .$this->getcargo()."<br><br";
+                header("location: funcionario.html");
+                exit;
             }
 
         }

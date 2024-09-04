@@ -1,7 +1,7 @@
 <?php 
 
-    namespace Projeto\ProjetoEstacionamento\PHP;
-    use Projeto\ProjetoEstacionamento\PHP\Entrada;
+    namespace Projeto\ProjetoEstacionamento\php;
+    use Projeto\ProjetoEstacionamento\php\Entrada;
 
     class Entrada {
             private string $codigo;

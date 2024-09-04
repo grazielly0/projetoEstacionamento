@@ -2,9 +2,8 @@
 
 namespace Projeto\projetoestacionamento\php;
  require_once ("funcionario.php");
- require_once ("controllFuncionario.php");
- use Projeto\projetoestacionamento\php\Entrada;
- use Projeto\projetoestacionamento\php\controllEntrada;
+ use Projeto\projetoEstacionamento\php\funcionario;
+ use Projeto\projetoEstacionamento\php\controllFuncionario;
  
  
  class controllFuncionário{
@@ -47,6 +46,8 @@ namespace Projeto\projetoestacionamento\php;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/estilo1.css">
 </head>
 <body>
     <form method="POST">
@@ -76,6 +77,7 @@ namespace Projeto\projetoestacionamento\php;
  
         <button>
             cadastrar
+            
        
     
         <?php
@@ -102,6 +104,11 @@ namespace Projeto\projetoestacionamento\php;
                          $_SESSION['telefone'], 
                          $_SESSION['salario'],
                          $_SESSION['cargo']);
+
+                        //   header("location: ../html/funcionario.html");
+                        //  exit;
+                        
+                    
                                                 
             }catch(Exception $erro){
                 echo $erro;
@@ -112,7 +119,14 @@ namespace Projeto\projetoestacionamento\php;
     </form>
  
     <?php
-                    echo $funcionario->imprimir();
+                    
+                        echo $funcionario->imprimir();
+                
                 ?>
+                <br><br>
+                <a href="../html/Index.html" class="btn btn-primary">Voltar</a>
+
+                <a href="../html/funcionario.html" class="btn btn-primary">Próximo</a>
+              
 </body>
 </html>

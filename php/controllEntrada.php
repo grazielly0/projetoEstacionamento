@@ -1,10 +1,13 @@
 <?php
 
 namespace Projeto\projetoestacionamento\php;
- require_once ("Entrada.php");
- require_once ("controllEntrada.php");
+ require_once ("../php/Entrada.php");
+ require_once ("../php/controllEntrada.php");
+ require_once ("../php/calculo.php");
  use Projeto\projetoestacionamento\php\Entrada;
  use Projeto\projetoestacionamento\php\controllEntrada;
+ use Projeto\projetoestacionamento\php\calculo;
+ 
  
  
  class controllEntrada{
@@ -47,6 +50,8 @@ namespace Projeto\projetoestacionamento\php;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/estilo1.css">
 </head>
 <body>
     <form method="POST">
@@ -69,9 +74,11 @@ namespace Projeto\projetoestacionamento\php;
         <label>Veículo</label>
         <input type="text-" id="veiculo" name="veiculo"> <br><br>
  
- 
-        <button>
-            cadastrar
+        <button class="btn btn-primary">Cadastrar</button>
+
+            <a href="../html/funcionario.html" class="btn btn-primary">Voltar</a> 
+            
+            
      
     
         <?php
@@ -87,8 +94,8 @@ namespace Projeto\projetoestacionamento\php;
                 $_SESSION['hrEntrada'] = $_POST['hrEntrada'];
                 $_SESSION['hrSaida'] = $_POST['hrSaida'];
                 $_SESSION['veiculo'] = $_POST['veiculo'];
- 
-               
+
+
                 $entrada = new entrada ( $_SESSION['codigo'],
                          $_SESSION['dtEntrada'], 
                          $_SESSION['dtSaida'],
@@ -107,11 +114,37 @@ namespace Projeto\projetoestacionamento\php;
     <?php
                   
                    echo $entrada->imprimir();
-
-                  
-                   
-                 
-
+                   echo "<br>";
                 ?>
+
+                <br><br>
+                <h1>Total a ser pago:</h1>
+
+        <?php
+
+        $num1 = $_POST['hrEntrada'];
+        $num2 = $_POST['hrSaida'];
+
+        function calcular($hora1, $hora2){
+             $total = $hora2 / 100 - $hora1 / 100;
+            if ($total >= 1){
+                return $total= 10;
+            }else{
+                return $total= 5;
+            }
+    }
+
+        ?>
+
+        <textarea name="100" rows="5" cols="100">
+        <?php
+        echo "Valor total é:" .calcular($num1, $num2);
+        ?>
+        </textarea>
+
+    
+       
+
+
 </body>
 </html>

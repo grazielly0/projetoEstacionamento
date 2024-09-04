@@ -26,6 +26,9 @@
       $entrada = new Entrada (123, "09/04/20024", "10/04/20024", "12:22", "13:22", "fusca");
       echo $entrada->imprimir();
 
+      $calculo = new Calculo (10, 2);
+      echo $calculo->imprimir();
+
      
 
   

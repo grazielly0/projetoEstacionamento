@@ -1,6 +1,6 @@
 <?php
-namespace Projeto\ProjetoEstacionamento\PHP;
-    use Projeto\ProjetoEstacionamento\PHP\Cadastro;
+    namespace Projeto\ProjetoEstacionamento\php;
+    use Projeto\ProjetoEstacionamento\php\gerente;
 
     class gerente {
        private int $codigo;
@@ -126,6 +126,8 @@ namespace Projeto\ProjetoEstacionamento\PHP;
                 "<br>Endereço:" .$this->getendereco().
                 "<br>Salário:" .$this->getsalario().
                 "<br>Cargo:" .$this->getcargo()."<br><br";
+                header("location: gerente.html");
+                exit;
             }
 
         }

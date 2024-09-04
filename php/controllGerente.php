@@ -2,9 +2,8 @@
 
 namespace Projeto\projetoestacionamento\php;
  require_once ("gerente.php");
- require_once ("controllGerente.php");
- use Projeto\projetoestacionamento\php\Entrada;
- use Projeto\projetoestacionamento\php\controllEntrada;
+ use Projeto\projetoestacionamento\php\gerente;
+ use Projeto\projetoestacionamento\php\controllGerente;
  
  
  class controllFuncionário{
@@ -85,23 +84,26 @@ namespace Projeto\projetoestacionamento\php;
             
             try{
  
-                $codigo= $_POST['codigo'];
-                $nome= $_POST['nome'];
-                $dtNascimento = $_POST['dtNascimento'];
-                $telefone = $_POST['telefone'];
-                $endereço = $_POST['endereco'];
-                $salario= $_POST['salario'];
-                $cargo = $_POST['cargo'];
-                
+                session_start();
+                $_SESSION['codigo'] = $_POST['codigo'];
+                $_SESSION['nome'] = $_POST['nome'];
+                $_SESSION['dtNascimento'] = $_POST['dtNascimento'];
+                $_SESSION['telefone'] = $_POST['telefone'];
+                $_SESSION['endereco'] = $_POST['telefone'];
+                $_SESSION['salario'] = $_POST['salario'];
+                $_SESSION['cargo'] = $_POST['cargo'];
  
                
-                $gerente = new gerente(  $codigo,
-                                                $nome,
-                                                $dtNascimento,
-                                                $telefone,
-                                                $endereço,
-                                                $salario,
-                                                $cargo);
+                $gerente = new Gerente ( $_SESSION['codigo'],
+                         $_SESSION['nome'], 
+                         $_SESSION['dtNascimento'],
+                         $_SESSION['telefone'],
+                         $_SESSION['telefone'], 
+                         $_SESSION['salario'],
+                         $_SESSION['cargo']);
+
+                          header("location: ../html/gerente.html");
+                         exit;
                                                 
             }catch(Exception $erro){
                 echo $erro;
